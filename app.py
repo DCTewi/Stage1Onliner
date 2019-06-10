@@ -25,7 +25,7 @@ def start_bot( page ):
             # Print log
             clear_scr()
             print("已经挂机 " + str(t * nap_time) + " 秒, ", end='')
-            print("累计 " + str(int(t * nap_time / 60 / 60)) + "小时" + str(int(t * nap_time / 60)) + "分钟" + str(int(t * nap_time % 60)) + "秒")
+            print("累计 " + str(int(t * nap_time / 60 / 60)) + "小时" + str(int(t * nap_time / 60 % 60)) + "分钟" + str(int(t * nap_time % 60)) + "秒")
             print("现有积分 " + total_point + " , " + user_group, flush=True)
             print("刷新间隔: " + str(nap_time) + " 秒", flush=True)
         
