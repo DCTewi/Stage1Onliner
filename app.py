@@ -8,19 +8,25 @@ import time
 t = 0 # nap times
 
 def clear_scr():
-    os.system("cls")
+    if (os.name == 'nt'):
+        os.system("cls")
+    else:
+        os.system('clear')
+    
 
 def start_bot( page ):
     global t
+    page.get('https://bbs.saraba1st.com/2b/home.php?mod=spacecp&ac=credit&showcredit=1')
+    page.implicitly_wait(30)
     while True:
         try:
             # Flush page
             clear_scr()
             print("刷新页面中...", flush=True)
-            page.get('https://bbs.saraba1st.com/2b/forum-75-1.html')
+            page.refresh()
+            page.implicitly_wait(30)
             total_point = page.find_element_by_id('extcreditmenu').text
             user_group = page.find_element_by_id('g_upmine').text
-            page.implicitly_wait(5)
 
             # Print log
             clear_scr()
@@ -37,6 +43,8 @@ def start_bot( page ):
             clear_scr()
             print("网页故障，将会在1分钟后重试...", flush=True)
             time.sleep(60)
+            page.get('https://bbs.saraba1st.com/2b/home.php?mod=spacecp&ac=credit&showcredit=1')
+            page.implicitly_wait(30)
 
 def main():
     # Init
@@ -48,14 +56,14 @@ def main():
     page.set_window_size(1000, 800)
     page.set_window_position(800, 100)
     page.get('https://bbs.saraba1st.com/2b/forum.php')
-    page.implicitly_wait(10)
+    page.implicitly_wait(30)
 
     try:
         # Login
         page.find_element_by_id('ls_username').send_keys(username)
         page.find_element_by_id('ls_password').send_keys(password)
         page.find_element_by_xpath('//*[@id="lsform"]/div/div/table/tbody/tr[2]/td[3]/button/em').click()
-        page.implicitly_wait(5)
+        page.implicitly_wait(30)
     except:
         print("页面初始化出现问题，请稍后重试", flush=True)
         return

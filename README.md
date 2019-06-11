@@ -2,11 +2,11 @@
 
 一个没什么用的挂Stage1论坛在线时间的python脚本。
 
-只支持Windows，Linux请自行修改相关windows依赖项（如`os.system("cls")`到`os.system("clear")`）。
+理论上支持Windows和Linux。
 
 ## 声明
 
-自用，不保证有效性，截至2019-06-10是有效的。
+自用，不保证有效性，截至2019-06-11是有效的。
 
 我没有发现s1有无禁止刷在线时间的规定，对于任何使用本脚本出现的后果与本人无关。如果s1禁止相关行为，我将删掉repo。
 
@@ -27,7 +27,7 @@
 ## 使用
 
 1. 编辑`config.py`，填写自己的用户名/密码，保存并关闭
-2. 双击`app.bat`，或者执行`python -u app.py`即可
+2. 双击`app.bat`，或者执行`python -u app.py`即可(linux可能需要`chmod +x ./app.sh`然后运行shell脚本)
 
 ## 协议
 
